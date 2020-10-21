@@ -7,6 +7,9 @@ session_start();
 include_once("classen/HTML.php");
 include_once("classen/GoogleAuthenticator.php");
 
+if(file_exists("./vendor/autoload.php"))
+	include_once("./vendor/autoload.php");
+
 if(isset($_REQUEST['logout']))
 	if($_REQUEST['logout'] == '1')
 		$_SESSION = array();
