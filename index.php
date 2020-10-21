@@ -4,9 +4,6 @@ header('Strict-Transport-Security: max-age=657000');
 error_reporting(E_ALL);
 session_start();
 
-include_once 'classen/MAIL/PHPMailer.php';
-include_once 'classen/MAIL/SMTP.php';
-
 include_once("classen/HTML.php");
 include_once("classen/GoogleAuthenticator.php");
 
