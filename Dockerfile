@@ -1,5 +1,7 @@
 FROM sahrea/webserver
 
+WORKDIR /var/www/html
+
 RUN composer require docker-php/docker-php
 
 COPY index.php /var/www/html/index.php
