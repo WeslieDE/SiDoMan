@@ -3,7 +3,6 @@ FROM sahrea/webserver
 RUN composer require docker-php/docker-php
 
 COPY index.php /var/www/html/index.php
-COPY .htaccess /var/www/html/.htaccess
 
 COPY style/ /var/www/html/style/
 COPY pages/ /var/www/html/pages/
