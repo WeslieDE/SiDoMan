@@ -1,5 +1,8 @@
 <?php
-	$HTML->setHTMLTitle("Seite nicht gefunden");
+    $HTML = new HTML();
+    $HTML->importHTML("style/default/error.html");
+
+	$HTML->setHTMLTitle("Error");
 
     $HTML->build();
     header("HTTP/1.0 404 Not Found");

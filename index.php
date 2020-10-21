@@ -30,5 +30,10 @@ if(isset($_SESSION['LOGIN']))
 		die();
 	}
 
-	include "./pages/login.php";
+	if(file_exists("./pages/login.php")){
+		include "./pages/login.php";
+	}else{
+		include "./pages/error.php";
+	}
+	
 ?>
