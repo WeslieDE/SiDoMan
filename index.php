@@ -36,9 +36,6 @@ if(isset($_SESSION['LOGIN']))
 		die();
 	}
 
-	if($_REQUEST['page'] == "debug")
-		include "./pages/debug.php";
-
 	if(file_exists("./pages/login.php")){
 		include "./pages/login.php";
 	}else{
