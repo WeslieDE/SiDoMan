@@ -11,7 +11,7 @@ include_once("classen/docker.php");
 if(file_exists("./vendor/autoload.php"))
 	include_once("./vendor/autoload.php");
 
-$_SESSION['CONATINER'] = "HTTP.Proxy";
+$_SESSION['CONATINER'] = "System.Proxy";
 $_SESSION['LOGIN'] = "true";
 
 if(isset($_REQUEST['logout']))
