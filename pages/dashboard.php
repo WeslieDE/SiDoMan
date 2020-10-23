@@ -22,9 +22,9 @@ if(isset($_SESSION['LOGIN']))
         $HTML->setHTMLTitle($container->Names[0]);
         $HTML->importHTML("style/default/dashboard.html");
 
-        $HTML->ReplaceLayoutInhalt("%%ContainerName%%", $container->Names[0]); 
+        $HTML->ReplaceLayoutInhalt("%%ContainerName%%", ltrim($container['Names']['0'], '/')); 
         $HTML->ReplaceLayoutInhalt("%%UserAPIKey%%", $container['Id']); 
-        $HTML->ReplaceLayoutInhalt("%%UserAPIKey%%", html_entity_decode($logOutput)); 
+        $HTML->ReplaceLayoutInhalt("%%ContainerLogOutput%%", html_entity_decode($logOutput)); 
 
         $HTML->build();
         echo $HTML->ausgabe();
