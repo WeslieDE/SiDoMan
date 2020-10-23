@@ -20,7 +20,7 @@
 
 		public function getContainerLogs($container){
 			curl_setopt($this->CurlClient, CURLOPT_POST, FALSE);
-			curl_setopt($this->CurlClient, CURLOPT_URL, "http:/v1.24/containers/".$container."/logs?stdout=1&tail=150");
+			curl_setopt($this->CurlClient, CURLOPT_URL, "http:/v1.24/containers/".$container."/logs?stdout=1&tail=350");
 
 			$rawOutput = curl_exec($this->CurlClient);
 			return $rawOutput;
