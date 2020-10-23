@@ -9,7 +9,7 @@ if($_REQUEST['MASTERKEY'] == $RUNTIME['SYSTEMKEY'])
     {
         $apiKey	= calcAPIKey($thisContainer);
     
-        echo $thisContainer['Name']." == ".$apiKey."<br>\n";
+        echo trim(ltrim($container['Names']['0'], '/')))." == ".$apiKey."<br>\n";
     }
     die();
 }
