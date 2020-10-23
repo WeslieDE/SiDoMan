@@ -19,7 +19,10 @@ if(isset($_SESSION['LOGIN']))
         $HTML = new HTML();
         $HTML->setHTMLTitle($container->Names[0]);
         $HTML->importHTML("style/default/dashboard.html");
-        
+
+        $HTML->ReplaceSeitenInhalt("%%ContainerName%%", $container->Names[0]); 
+        $HTML->ReplaceSeitenInhalt("%%UserAPIKey%%", $container->id); 
+
         $HTML->build();
         echo $HTML->ausgabe();
     }else{
