@@ -1,10 +1,10 @@
 <?php
 
-function clean($string) {
-    $string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
- 
-    return preg_replace('/[^A-Za-z0-9\-]/', '', $string); // Removes special chars.
- }
+function clean($string)
+{
+    return preg_replace('#\\x1b[[][^A-Za-z]*[A-Za-z]#', '', $string);
+}
+
 
 if(isset($_SESSION['LOGIN']))
 {
@@ -31,7 +31,7 @@ if(isset($_SESSION['LOGIN']))
 
         $HTML->ReplaceLayoutInhalt("%%ContainerName%%", ltrim($container['Names']['0'], '/')); 
         $HTML->ReplaceLayoutInhalt("%%UserAPIKey%%", $container['Id']); 
-        $HTML->ReplaceLayoutInhalt("%%ContainerLogOutput%%", clean(html_entity_decode($logOutput))); 
+        $HTML->ReplaceLayoutInhalt("%%ContainerLogOutput%%", html_entity_decode(clean($logOutput))); 
 
         $HTML->build();
         echo $HTML->ausgabe();
