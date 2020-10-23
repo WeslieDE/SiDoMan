@@ -9,10 +9,13 @@
 
 			foreach($allContainers as $thisContainer)
 			{
-				$apiKey	= calcAPIKey($thisContainer);
-
-				if($apiKey == $_POST['accesskey'] && trim(ltrim($container['Names']['0'], '/') == trim($_POST['containername']))
-					$container = $thisContainer;
+				if(isset($thisContainer['Labels']['remotepass']))
+				{
+					if(trim($thisContainer['Labels']['remotepass']) == trim($_POST['accesskey']))
+					{
+						$container = $thisContainer;
+					}
+				}
 			}
 
 			if($container != NULL)
