@@ -12,7 +12,7 @@
 
 		public function getAllContainers(){
 			curl_setopt($this->CurlClient, CURLOPT_POST, FALSE);
-			curl_setopt($this->CurlClient, CURLOPT_URL, "http:/v1.24/containers/json");
+			curl_setopt($this->CurlClient, CURLOPT_URL, "http:/v1.24/containers/json?all=1");
 
 			$jsonRAWData = curl_exec($this->CurlClient);
 			return json_decode($jsonRAWData, TRUE);
