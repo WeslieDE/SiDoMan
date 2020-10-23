@@ -27,7 +27,6 @@ if(isset($_SESSION['LOGIN']))
         $HTML->importHTML("style/default/dashboard.html");
 
         $HTML->ReplaceLayoutInhalt("%%ContainerName%%", trim(ltrim($container['Names']['0'], '/'))); 
-        $HTML->ReplaceLayoutInhalt("%%UserAPIKey%%", calcAPIKey($container)); 
         $HTML->ReplaceLayoutInhalt("%%ContainerLogOutput%%", html_entity_decode(clean($logOutput))); 
         $HTML->ReplaceLayoutInhalt("%%STATUS%%", html_entity_decode($container['Status'])); 
 

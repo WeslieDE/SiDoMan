@@ -7,10 +7,4 @@ function clean($string)
     return preg_replace('#\\x1b[[][^A-Za-z]*[A-Za-z]#', '', $string);
 }
 
-function calcAPIKey($container)
-{
-    global $RUNTIME;
-
-    return md5($container['Id']);
-}
 ?>
