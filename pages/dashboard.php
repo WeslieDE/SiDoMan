@@ -2,10 +2,9 @@
 
 function clean($string)
 {
-    $string = str_repeat("", "", $string);
+    $string = str_replace("", "", $string);
     return preg_replace('#\\x1b[[][^A-Za-z]*[A-Za-z]#', '', $string);
 }
-
 
 if(isset($_SESSION['LOGIN']))
 {
