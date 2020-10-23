@@ -1,4 +1,6 @@
 <?php
+print_r($_SESSION);
+
 if(isset($_SESSION['LOGIN']))
 {
     if($_SESSION['LOGIN'] == 'true')
@@ -9,9 +11,9 @@ if(isset($_SESSION['LOGIN']))
 
         foreach($allContainers as $thisContainer)
         {
-            echo $thisContainer->Id." == ".$thisContainer->Names[0]."\n";
+            echo $thisContainer['id']." == ".$thisContainer['Names'][0]."\n";
 
-            if($thisContainer->Id == $_SESSION['CONATINER'] || $thisContainer->Names[0] == ("/".$_SESSION['CONATINER']))
+            if($thisContainer['id'] == $_SESSION['CONATINER'] || $thisContainer['Names'][0] == ("/".$_SESSION['CONATINER']))
                 $container = $thisContainer;
                 
         }
