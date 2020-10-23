@@ -46,5 +46,9 @@
 
 			$rawOutput = curl_exec($this->CurlClient);
 		}
+
+		public function getError($container){
+			return curl_strerror(curl_errno($this->CurlClient));
+		}
 	}
 ?>

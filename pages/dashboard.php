@@ -9,13 +9,14 @@ if(isset($_SESSION['LOGIN']))
         $allContainers = $dockerClient->getAllContainers();
         $container = NULL;
 
+        echo ("/".$_SESSION['CONATINER']);
+
         foreach($allContainers as $thisContainer)
         {
-            echo $thisContainer['id']." == ".$thisContainer['Names'][0]."\n";
+            echo $thisContainer['Id']." == ".$thisContainer['Names'][0]."\n";
 
-            if($thisContainer['id'] == $_SESSION['CONATINER'] || $thisContainer['Names'][0] == ("/".$_SESSION['CONATINER']))
+            if($thisContainer['Id'] == $_SESSION['CONATINER'] || $thisContainer['Names'][0] == ("/".$_SESSION['CONATINER']))
                 $container = $thisContainer;
-                
         }
 
         if($container == NULL)
