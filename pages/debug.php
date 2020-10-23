@@ -1,10 +1,8 @@
 <?php
 
-        $dockerClient = new Docker();
-        $allContainers = $dockerClient->getAllContainers();
-        
-        print_r($allContainers);
-        die();
-
+    $dockerClient = new Docker();
+    $allContainers = $dockerClient->getAllContainers();
+    
+    print_r($allContainers);
 
 ?>
