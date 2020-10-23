@@ -9,7 +9,7 @@
 
 			foreach($allContainers as $thisContainer)
 			{
-				if(trim($_POST['containername']) == trim(ltrim($container['Names']['0'], '/')))
+				if(trim($_POST['containername']) == trim(ltrim($thisContainer['Names']['0'], '/')))
 				{
 					if(isset($thisContainer['Labels']['remotepass']))
 					{
