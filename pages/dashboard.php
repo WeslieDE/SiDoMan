@@ -1,20 +1,4 @@
 <?php
-
-function clean($string)
-{
-    $string = str_replace("", "", $string);
-    $string = str_replace("\r", "", $string);
-    $string = str_replace("\n\n", "\n", $string);
-    return preg_replace('#\\x1b[[][^A-Za-z]*[A-Za-z]#', '', $string);
-}
-
-function calcAPIKey($container)
-{
-    global $RUNTIME;
-
-    return md5($RUNTIME['SYSTEMKEY'].md5($container['Names'][0]));
-}
-
 if(isset($_SESSION['LOGIN']))
 {
     if($_SESSION['LOGIN'] == 'true')
