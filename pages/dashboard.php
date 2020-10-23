@@ -22,12 +22,15 @@ if(isset($_SESSION['LOGIN']))
         if($container == NULL)
             die("unknown container");
         
+        $logOutput = $dockerClient->getContainerLogs($_SESSION['CONATINER']);
+
         $HTML = new HTML();
         $HTML->setHTMLTitle($container->Names[0]);
         $HTML->importHTML("style/default/dashboard.html");
 
-        $HTML->ReplaceLayoutInhalt("%%ContainerName%%", ltrim($container->Names[0], '/')); 
-        $HTML->ReplaceLayoutInhalt("%%UserAPIKey%%", $container->Id); 
+        $HTML->ReplaceLayoutInhalt("%%ContainerName%%", $container->Names[0]); 
+        $HTML->ReplaceLayoutInhalt("%%UserAPIKey%%", $container['Id']]); 
+        $HTML->ReplaceLayoutInhalt("%%UserAPIKey%%", html_entity_decode($logOutput)); 
 
         $HTML->build();
         echo $HTML->ausgabe();
