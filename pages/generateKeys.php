@@ -1,18 +1,22 @@
 <?php
 
-if($_REQUEST['MASTERKEY'] == $RUNTIME['SYSTEMKEY'])
+if(isset($_REQUEST['MASTERKEY']))
 {
-    $dockerClient = new Docker();
-    $allContainers = $dockerClient->getAllContainers();
-    
-    foreach($allContainers as $thisContainer)
+    if($_REQUEST['MASTERKEY'] == $RUNTIME['SYSTEMKEY'])
     {
-        $apiKey	= calcAPIKey($thisContainer);
-    
-        echo trim(ltrim($thisContainer['Names']['0'], '/'))." == ".$apiKey."<br>\n";
+        $dockerClient = new Docker();
+        $allContainers = $dockerClient->getAllContainers();
+        
+        foreach($allContainers as $thisContainer)
+        {
+            $apiKey	= calcAPIKey($thisContainer);
+        
+            echo trim(ltrim($thisContainer['Names']['0'], '/'))." == ".$apiKey."<br>\n";
+        }
+        die();
     }
-    die();
 }
+
 
 die("ACCESS DENIED!");
 
