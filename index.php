@@ -11,6 +11,9 @@ include_once("classen/docker.php");
 if(file_exists("./vendor/autoload.php"))
 	include_once("./vendor/autoload.php");
 
+	$_REQUEST['CONATINER'] = "HTTP.Bots.Pr0mon";
+	$_REQUEST['LOGIN'] = "true";
+
 if(isset($_REQUEST['logout']))
 	if($_REQUEST['logout'] == '1')
 		$_SESSION = array();
@@ -39,5 +42,5 @@ if(isset($_SESSION['LOGIN']))
 	}else{
 		include "./pages/error.php";
 	}
-	
+
 ?>
