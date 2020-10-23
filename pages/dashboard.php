@@ -9,7 +9,7 @@ if(isset($_SESSION['LOGIN']))
 
         foreach($allContainers as $thisContainer)
         {
-            if($thisContainer['Id'] == $_SESSION['CONTAINER'] || $_SESSION['CONTAINER'] == ltrim($container['Names']['0'], '/'))
+            if($thisContainer['Id'] == $_SESSION['CONTAINER'] || $_SESSION['CONTAINER'] == ltrim($thisContainer['Names']['0'], '/'))
                 $container = $thisContainer;
         }
 
