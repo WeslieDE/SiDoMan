@@ -11,6 +11,7 @@
 		}
 
 		public function getAllContainers(){
+			curl_setopt($this->CurlClient, CURLOPT_POST, FALSE);
 			curl_setopt($this->CurlClient, CURLOPT_URL, "http:/v1.24/containers/json");
 
 			$jsonRAWData = curl_exec($this->CurlClient);
@@ -18,6 +19,7 @@
 		}
 
 		public function getContainerLogs($container){
+			curl_setopt($this->CurlClient, CURLOPT_POST, FALSE);
 			curl_setopt($this->CurlClient, CURLOPT_URL, "http:/v1.24/containers/".$container."/logs?stdout=1&tail=150");
 
 			$rawOutput = curl_exec($this->CurlClient);
@@ -25,15 +27,24 @@
 		}
 
 		public function startContainer($container){
+			curl_setopt($this->CurlClient, CURLOPT_POST, TRUE);
+			curl_setopt($this->CurlClient, CURLOPT_URL, "http:/v1.24/containers/".$container."/start");
 
+			$rawOutput = curl_exec($this->CurlClient);
 		}
 
 		public function stopContainer($container){
+			curl_setopt($this->CurlClient, CURLOPT_POST, TRUE);
+			curl_setopt($this->CurlClient, CURLOPT_URL, "http:/v1.24/containers/".$container."/stop");
 
+			$rawOutput = curl_exec($this->CurlClient);
 		}
 
 		public function killContainer($container){
+			curl_setopt($this->CurlClient, CURLOPT_POST, TRUE);
+			curl_setopt($this->CurlClient, CURLOPT_URL, "http:/v1.24/containers/".$container."/kill");
 
+			$rawOutput = curl_exec($this->CurlClient);
 		}
 	}
 ?>
