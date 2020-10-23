@@ -2,6 +2,7 @@
 
 function clean($string)
 {
+    $string = str_repeat("", "", $string);
     return preg_replace('#\\x1b[[][^A-Za-z]*[A-Za-z]#', '', $string);
 }
 
