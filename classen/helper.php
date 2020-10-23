@@ -11,7 +11,7 @@ function calcAPIKey($container)
 {
     global $RUNTIME;
 
-    return md5($RUNTIME['SYSTEMKEY'].md5($container['Names'][0]));
+    return md5($RUNTIME['SYSTEMKEY'].md5(trim(ltrim($container['Names']['0'], '/'))));
 }
 
 if(!file_exists("./pages/systemkey.txt"))

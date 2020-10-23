@@ -1,6 +1,4 @@
 <?php
-
-	
 	if(isset($_POST['do-login']))
 	{
 		if(isset($_POST['containername']) || isset($_POST['accesskey']))
@@ -27,11 +25,10 @@
 			}
 		}
 	}
-	
+
 	$HTML = new HTML();
 	$HTML->setHTMLTitle("Login");
 	$HTML->importHTML("style/default/login.html");
 	$HTML->build();
 	echo $HTML->ausgabe();
-
 ?>
