@@ -9,8 +9,11 @@ if(isset($_SESSION['LOGIN']))
 
         foreach($allContainers as $thisContainer)
         {
+            echo $thisContainer->Id." == ".$thisContainer->Names[0];
+
             if($thisContainer->Id == $_SESSION['CONATINER'] || $thisContainer->Names[0] == ("/".$_SESSION['CONATINER']))
                 $container = $thisContainer;
+                
         }
 
         if($container == NULL)
