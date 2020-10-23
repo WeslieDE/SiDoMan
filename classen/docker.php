@@ -14,7 +14,7 @@
 			curl_setopt($this->CurlClient, CURLOPT_URL, "http:/v1.24/containers/json");
 
 			$jsonRAWData = curl_exec($this->CurlClient);
-			print_r($jsonRAWData);
+			curl_close($this->CurlClient);
 			return json_decode($jsonRAWData, TRUE);
 		}
 
