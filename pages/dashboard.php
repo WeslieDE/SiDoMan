@@ -10,7 +10,7 @@ if(isset($_SESSION['LOGIN']))
         foreach($allContainers as $thisContainer)
         {
             if($thisContainer->Id == $_REQUEST['CONATINER'] || $thisContainer->Names[0] == ("/".$_REQUEST['CONATINER']))
-                $container = $thisContainer
+                $container = $thisContainer;
         }
 
         if($container == NULL)
