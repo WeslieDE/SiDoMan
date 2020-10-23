@@ -16,18 +16,18 @@ if(isset($_SESSION['LOGIN']))
             die("unknown container");
 
         if(isset($_REQUEST['do-start']))
-        $dockerClient->startContainer($thisContainer['Id']);
+            $dockerClient->startContainer($container['Id']);
 
         if(isset($_REQUEST['do-stop']))
-        $dockerClient->stopContainer($thisContainer['Id']);
+            $dockerClient->stopContainer($container['Id']);
 
         if(isset($_REQUEST['do-kill']))
-        $dockerClient->killContainer($thisContainer['Id']);
+            $dockerClient->killContainer($container['Id']);
 
         if(isset($_REQUEST['do-restart']))
         {
-            $dockerClient->killContainer($thisContainer['Id']);
-            $dockerClient->startContainer($thisContainer['Id']);
+            $dockerClient->killContainer($container['Id']);
+            $dockerClient->startContainer($container['Id']);
         }
         
         include "./pages/dashboard.php";
