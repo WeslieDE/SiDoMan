@@ -16,7 +16,7 @@ if(isset($_SESSION['LOGIN']))
         if($container == NULL)
             die("unknown container");
         
-        $logOutput = $dockerClient->getContainerLogs($_SESSION['CONATINER']);
+        $logOutput = $dockerClient->getContainerLogs($_SESSION['CONTAINER']);
 
         $HTML = new HTML();
         $HTML->setHTMLTitle(ltrim($container['Names']['0'], '/'));
