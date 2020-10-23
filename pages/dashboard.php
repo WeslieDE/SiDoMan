@@ -7,6 +7,13 @@ function clean($string)
     return preg_replace('#\\x1b[[][^A-Za-z]*[A-Za-z]#', '', $string);
 }
 
+function calcAPIKey($container)
+{
+    global $RUNTIME;
+
+    return md5($RUNTIME['SYSTEMKEY'].md5($container['Names'][0]));
+}
+
 if(isset($_SESSION['LOGIN']))
 {
     if($_SESSION['LOGIN'] == 'true')
@@ -31,7 +38,7 @@ if(isset($_SESSION['LOGIN']))
         $HTML->importHTML("style/default/dashboard.html");
 
         $HTML->ReplaceLayoutInhalt("%%ContainerName%%", trim(ltrim($container['Names']['0'], '/'))); 
-        $HTML->ReplaceLayoutInhalt("%%UserAPIKey%%", trim($container['Id'])); 
+        $HTML->ReplaceLayoutInhalt("%%UserAPIKey%%", calcAPIKey($container)); 
         $HTML->ReplaceLayoutInhalt("%%ContainerLogOutput%%", html_entity_decode(clean($logOutput))); 
 
         $HTML->build();

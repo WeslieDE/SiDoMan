@@ -8,8 +8,16 @@ include_once("classen/HTML.php");
 include_once("classen/GoogleAuthenticator.php");
 include_once("classen/docker.php");
 
-if(file_exists("./vendor/autoload.php"))
-	include_once("./vendor/autoload.php");
+$RUNTIME = array();
+
+if(!file_exists("./pages/systemkey.txt"))
+{
+	$randomKey	=	md5(rand(111111111, 999999999));
+	file_put_contents("./pages/systemkey.txt", $randomKey);
+}
+
+$RUNTIME['SYSTEMKEY'] = file_get_contents("./pages/systemkey.txt");
+
 
 $_SESSION['CONATINER'] = "System.Proxy";
 $_SESSION['LOGIN'] = "true";
