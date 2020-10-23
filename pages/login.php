@@ -18,7 +18,7 @@
 			if($container != NULL)
 			{
 				$_SESSION['LOGIN'] = "true";
-				$_SESSION['CONTAINER'] = $container['Name'];
+				$_SESSION['CONTAINER'] = $container['Name'][0];
 
 				include "./pages/dashboard.php";
 				die();

@@ -14,7 +14,11 @@ if(isset($_SESSION['LOGIN']))
         }
 
         if($container == NULL)
+        {
+            print_r($_SESSION);
             die("unknown container");
+        }
+            
 
         $logOutput = $dockerClient->getContainerLogs($_SESSION['CONTAINER']);
 
