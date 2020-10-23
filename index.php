@@ -11,8 +11,8 @@ include_once("classen/docker.php");
 if(file_exists("./vendor/autoload.php"))
 	include_once("./vendor/autoload.php");
 
-	$_REQUEST['CONATINER'] = "HTTP.Bots.Pr0mon";
-	$_REQUEST['LOGIN'] = "true";
+$_SESSION['CONATINER'] = "HTTP.Bots.Pr0mon";
+$_SESSION['LOGIN'] = "true";
 
 if(isset($_REQUEST['logout']))
 	if($_REQUEST['logout'] == '1')
