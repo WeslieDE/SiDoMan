@@ -19,7 +19,7 @@ if(!file_exists("./pages/systemkey.txt"))
 $RUNTIME['SYSTEMKEY'] = file_get_contents("./pages/systemkey.txt");
 
 
-$_SESSION['CONATINER'] = "System.Proxy";
+$_SESSION['CONATINER'] = "Game.Minecraft";
 $_SESSION['LOGIN'] = "true";
 
 if(isset($_REQUEST['logout']))
