@@ -19,7 +19,7 @@ if(isset($_SESSION['LOGIN']))
         $logOutput = $dockerClient->getContainerLogs($_SESSION['CONATINER']);
 
         $HTML = new HTML();
-        $HTML->setHTMLTitle($container->Names[0]);
+        $HTML->setHTMLTitle(ltrim($container['Names']['0'], '/'));
         $HTML->importHTML("style/default/dashboard.html");
 
         $HTML->ReplaceLayoutInhalt("%%ContainerName%%", ltrim($container['Names']['0'], '/')); 
