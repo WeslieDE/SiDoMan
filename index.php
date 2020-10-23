@@ -4,20 +4,11 @@ header('Strict-Transport-Security: max-age=657000');
 error_reporting(E_ALL);
 session_start();
 
+$RUNTIME = array();
+
 include_once("classen/HTML.php");
 include_once("classen/helper.php");
 include_once("classen/docker.php");
-
-$RUNTIME = array();
-
-if(!file_exists("./pages/systemkey.txt"))
-{
-	$randomKey	=	md5(rand(111111111, 999999999));
-	file_put_contents("./pages/systemkey.txt", $randomKey);
-}
-
-$RUNTIME['SYSTEMKEY'] = file_get_contents("./pages/systemkey.txt");
-
 
 $_SESSION['CONATINER'] = "Game.OpenSimulator.Twix";
 $_SESSION['LOGIN'] = "true";

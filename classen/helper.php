@@ -13,4 +13,13 @@ function calcAPIKey($container)
 
     return md5($RUNTIME['SYSTEMKEY'].md5($container['Names'][0]));
 }
+
+if(!file_exists("./pages/systemkey.txt"))
+{
+	$randomKey	=	md5(rand(111111111, 999999999));
+	file_put_contents("./pages/systemkey.txt", $randomKey);
+}
+
+$RUNTIME['SYSTEMKEY'] = file_get_contents("./pages/systemkey.txt");
+
 ?>
