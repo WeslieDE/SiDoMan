@@ -1,4 +1,14 @@
 <?php
+	if(isset($_SESSION['LOGIN']))
+	{
+		if($_SESSION['LOGIN'] == 'true')
+		{
+			include "./pages/dashboard.php";
+			die();
+		}
+	}
+
+
 	if(isset($_POST['do-login']))
 	{
 		if(isset($_POST['containername']) || isset($_POST['accesskey']))
