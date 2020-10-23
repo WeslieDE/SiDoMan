@@ -7,6 +7,7 @@
 			$this->CurlClient = curl_init();
 			curl_setopt($this->CurlClient, CURLOPT_UNIX_SOCKET_PATH, "/var/run/docker.sock");
 			curl_setopt($this->CurlClient, CURLOPT_RETURNTRANSFER, TRUE);
+			curl_setopt($this->CurlClient, CURLOPT_BINARYTRANSFER, TRUE);
 		}
 
 		public function getAllContainers(){
@@ -17,7 +18,7 @@
 		}
 
 		public function getContainerLogs($container){
-			curl_setopt($this->CurlClient, CURLOPT_URL, "http:/v1.24/containers/".$container."/logs?stdout=1");
+			curl_setopt($this->CurlClient, CURLOPT_URL, "http:/v1.24/containers/".$container."/logs?stdout=1&tail=150");
 
 			$rawOutput = curl_exec($this->CurlClient);
 			return $rawOutput;
