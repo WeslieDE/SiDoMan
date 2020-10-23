@@ -56,11 +56,13 @@
 			</div>
 		</div>
 		<div class="main-menu-area mg-tb-40">
-			<div class="container" style="text-align:center;">
-				<button class="btn-lg notika-btn-lightgreen waves-effect">START CONTAINER</button>
-				<button class="btn-lg notika-btn-orange waves-effect">STOP CONTAINER</button>
-				<button class="btn-lg notika-btn-red waves-effect">KILL CONTAINER</button>
-				<button class="btn-lg notika-btn-cyan waves-effect">RESTART CONTAINER</button>
+      <div class="container" style="text-align:center;">
+        <form method="post" action="index.php?page=do" enctype="multipart/form-data">
+          <button type = "submit" name="do-start" value="start" class="btn-lg notika-btn-lightgreen waves-effect">START CONTAINER</button>
+          <button type = "submit" name="do-stop" value="stop" class="btn-lg notika-btn-orange waves-effect">STOP CONTAINER</button>
+          <button type = "submit" name="do-kill" value="kill" class="btn-lg notika-btn-red waves-effect">KILL CONTAINER</button>
+          <button type = "submit" name="do-restart" value="restart" class="btn-lg notika-btn-cyan waves-effect">RESTART CONTAINER</button>
+        </form>
 			</div>
 		</div>
 		<div class="breadcomb-area mg-tb-40">
