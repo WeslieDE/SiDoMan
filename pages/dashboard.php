@@ -26,7 +26,7 @@ if(isset($_SESSION['LOGIN']))
         $HTML->setHTMLTitle($container->Names[0]);
         $HTML->importHTML("style/default/dashboard.html");
 
-        $HTML->ReplaceLayoutInhalt("%%ContainerName%%", ltrim($container->Names[0], '/'); ); 
+        $HTML->ReplaceLayoutInhalt("%%ContainerName%%", ltrim($container->Names[0], '/')); 
         $HTML->ReplaceLayoutInhalt("%%UserAPIKey%%", $container->Id); 
 
         $HTML->build();
