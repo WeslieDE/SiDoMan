@@ -6,6 +6,7 @@ session_start();
 
 include_once("classen/HTML.php");
 include_once("classen/GoogleAuthenticator.php");
+include_once("classen/docker.php");
 
 if(file_exists("./vendor/autoload.php"))
 	include_once("./vendor/autoload.php");
