@@ -71,7 +71,7 @@
 						<div class="breadcomb-list">
 							<div class="row">
 								<div class="breadcomb-ctn" style="margin-right: 20px">
-									<pre class="pre-scrollable" style="width: 100%; min-height: 350px; max-height: 350px; height: 350px; overflow-y: scroll;">
+									<pre id="consoleview" class="pre-scrollable" style="width: 100%; min-height: 350px; max-height: 350px; height: 350px; overflow-y: scroll;">
 %%ContainerLogOutput%%
                   </pre>
 								</div>
@@ -80,7 +80,13 @@
 					</div>
 				</div>
 			</div>
-		</div>
+    </div>
+    
+    <script>
+      var messageBody = document.querySelector('#consoleview');
+      messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
+
+    </script>
 		<script src="./style/default/js/vendor/jquery-1.12.4.min.js"></script>
 		<script src="./style/default/js/bootstrap.min.js"></script>
 		<script src="./style/default/js/wow.min.js"></script>
