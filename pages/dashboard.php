@@ -16,7 +16,7 @@ if(isset($_SESSION['LOGIN']))
         if($container == NULL)
             die("unknown container");
         
-        print_r($container);
+        //print_r($container);
 
         $logOutput = $dockerClient->getContainerLogs($_SESSION['CONTAINER']);
 
@@ -27,6 +27,7 @@ if(isset($_SESSION['LOGIN']))
         $HTML->ReplaceLayoutInhalt("%%ContainerName%%", trim(ltrim($container['Names']['0'], '/'))); 
         $HTML->ReplaceLayoutInhalt("%%UserAPIKey%%", calcAPIKey($container)); 
         $HTML->ReplaceLayoutInhalt("%%ContainerLogOutput%%", html_entity_decode(clean($logOutput))); 
+        $HTML->ReplaceLayoutInhalt("%%STATUS%%", html_entity_decode($container['Status'])); 
 
         $HTML->build();
         echo $HTML->ausgabe();
