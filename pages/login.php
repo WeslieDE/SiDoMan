@@ -11,7 +11,7 @@
 			{
 				$apiKey	= calcAPIKey($thisContainer);
 
-				if($apiKey == $_POST['accesskey'])
+				if($apiKey == $_POST['accesskey'] && trim(ltrim($container['Names']['0'], '/') == trim($_POST['containername']))
 					$container = $thisContainer;
 			}
 
