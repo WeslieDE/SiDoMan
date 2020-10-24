@@ -77,15 +77,20 @@
 %%ContainerLogOutput%%
                   </pre>
                 </div>
-                <div class="form-group float-lb">
-                  <div class="nk-int-st">
-                    <form method="post" action="index.php?page=do" enctype="multipart/form-data">
-                      <input type="text" name="commandtext" placeholder="..." class="form-control">
-                    </form>
-                  </div>
-                </div>
-
-                <button type="submit" name="do-command" value="command" class="btn-lg notika-btn-cyan waves-effect">RUN</button>
+                <table>
+                  <tr>
+                    <td>
+                      <div class="form-group float-lb">
+                        <div class="nk-int-st">
+                          <form method="post" action="index.php?page=do" enctype="multipart/form-data">
+                            <input type="text" name="commandtext" placeholder="..." class="form-control">
+                          </form>
+                        </div>
+                      </div>
+                    </td>
+                    <td><button type="submit" name="do-command" value="command" class="btn-lg notika-btn-cyan waves-effect">RUN</button></td>
+                   </tr>
+                </table>
 							</div>
 						</div>
 					</div>
