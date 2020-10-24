@@ -12,7 +12,7 @@
 		{
 			$dockerClient = new Docker();
 			$allContainers = $dockerClient->getAllContainers();
-			$container = NULL;
+			$currentContainer = NULL;
 
 			foreach($allContainers as $thisContainer)
 			{
@@ -22,7 +22,7 @@
 					{
 						if(trim($thisContainer['Labels']['remotepass']) == trim($_REQUEST['KEY']))
 						{
-							$container = $thisContainer;
+							$currentContainer = $thisContainer;
 						}
 					}
 				}	
@@ -30,7 +30,7 @@
 		}
 	}
 
-	if($container == NULL)
+	if($currentContainer == NULL)
 		die("access denied!");
 
 	if(isset($_REQUEST['METODE']))
@@ -39,26 +39,26 @@
 		{
 			if(strtoupper($_REQUEST['METODE']) == "START")
 			{
-				$dockerClient->startContainer($container['Id']);
+				$dockerClient->startContainer($currentContainer['Id']);
 				echo "DONE";
 			}
 			
 			if(strtoupper($_REQUEST['METODE']) == "STOP")
 			{
-				$dockerClient->stopContainer($container['Id']);
+				$dockerClient->stopContainer($currentContainer['Id']);
 				echo "DONE";
 			}
 
 			if(strtoupper($_REQUEST['METODE']) == "KILL")
 			{
-				$dockerClient->killContainer($container['Id']);
+				$dockerClient->killContainer($currentContainer['Id']);
 				echo "DONE";
 			}
 
 			if(strtoupper($_REQUEST['METODE']) == "RESTART")
 			{
-				$dockerClient->killContainer($container['Id']);
-				$dockerClient->startContainer($container['Id']);
+				$dockerClient->killContainer($currentContainer['Id']);
+				$dockerClient->startContainer($currentContainer['Id']);
 				echo "DONE";
 			}
 
@@ -69,7 +69,7 @@
 
 			if(strtoupper($_REQUEST['METODE']) == "LOG")
 			{
-				$logOutput = $dockerClient->getContainerLogs($container['Id']);
+				$logOutput = $dockerClient->getContainerLogs($currentContainer['Id']);
 				echo clean($logOutput);
 			}
 
@@ -84,7 +84,7 @@
 
 						file_put_contents($filename, $command."\n");
 
-						system('cat '.$filename.' | socat EXEC:"docker attach '.$container['Id'].'",pty STDIN');
+						system('cat '.$filename.' | socat EXEC:"docker attach '.$currentContainer['Id'].'",pty STDIN');
 						unlink($filename);
 						echo "DONE";
 					}
