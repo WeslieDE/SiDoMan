@@ -41,7 +41,7 @@ if(isset($_SESSION['LOGIN']))
                 {
                     file_put_contents($filename, $command);
 
-                    exec('cat '.$filename.' | socat EXEC:"docker attach '.$container['Id'].'",pty STDIN');
+                    system('cat '.$filename.' | socat EXEC:"docker attach '.$container['Id'].'",pty STDIN');
                 }
             }
         }
