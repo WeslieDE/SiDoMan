@@ -30,6 +30,18 @@ if(isset($_SESSION['LOGIN']))
             $dockerClient->startContainer($container['Id']);
         }
         
+        if(isset($_REQUEST['do-command']))
+        {
+            if(isset($_REQUEST['commandtext']))
+            {
+                $filename = "/tmp/command".time().".txt";
+                $command = trim($_REQUEST['commandtext']);
+                file_put_contents($filename, $command);
+                
+                exec('cat '.$filename.' | socat EXEC:"docker attach '.$container['Id'].'",pty STDIN');
+            }
+        }
+
         header("Location: index.php");
         die();
     }else{
