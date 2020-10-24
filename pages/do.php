@@ -30,7 +30,8 @@ if(isset($_SESSION['LOGIN']))
             $dockerClient->startContainer($container['Id']);
         }
         
-        include "./pages/dashboard.php";
+        header("Location: index.php");
+        die();
     }else{
         die("Login is not valid!");
     }
