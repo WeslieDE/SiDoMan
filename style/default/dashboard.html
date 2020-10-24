@@ -79,8 +79,10 @@
                 </div>
                 <div class="form-group float-lb">
                   <div class="nk-int-st">
-                      <input type="text" class="form-control">
-                      <label class="nk-label">...</label>
+                    <form method="post" action="index.php?page=do" enctype="multipart/form-data">
+                      <input type="text" name="commandtext" class="form-control">
+                      <button type="submit" name="do-command" value="command" class="btn-lg notika-btn-cyan waves-effect">RUN</button>
+                    </form>
                   </div>
                 </div>
 							</div>
