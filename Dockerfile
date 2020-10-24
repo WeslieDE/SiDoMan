@@ -10,6 +10,7 @@ RUN apt-get update && apt-get -y install docker-ce-cli socat
 RUN touch /var/run/docker.sock && chmod 777 /var/run/docker.sock
 
 COPY index.php /var/www/html/index.php
+COPY api.php /var/www/html/api.php
 
 COPY style/ /var/www/html/style/
 COPY pages/ /var/www/html/pages/
