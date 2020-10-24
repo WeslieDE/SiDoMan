@@ -42,6 +42,7 @@ if(isset($_SESSION['LOGIN']))
                     file_put_contents($filename, $command."\n");
 
                     system('cat '.$filename.' | socat EXEC:"docker attach '.$container['Id'].'",pty STDIN');
+                    unlink($filename);
                 }
             }
         }
