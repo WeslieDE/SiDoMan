@@ -69,7 +69,7 @@
 
 			if(strtoupper($_REQUEST['METODE']) == "LOG")
 			{
-				$logOutput = $dockerClient->getContainerLogs($_SESSION['CONTAINER']);
+				$logOutput = $dockerClient->getContainerLogs($container['Id']);
 				echo clean($logOutput);
 			}
 
