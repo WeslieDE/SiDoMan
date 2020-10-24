@@ -39,7 +39,7 @@ if(isset($_SESSION['LOGIN']))
 
                 if($command != "")
                 {
-                    file_put_contents($filename, $command);
+                    file_put_contents($filename, $command."\n");
 
                     system('cat '.$filename.' | socat EXEC:"docker attach '.$container['Id'].'",pty STDIN');
                 }
