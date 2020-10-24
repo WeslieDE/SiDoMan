@@ -1,0 +1,138 @@
+<!doctype html>
+<html class="no-js" lang="">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<title>SIDOMAN - %%EchoTitle%%</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="shortcut icon" type="image/x-icon" href="./style/default/img/favicon.ico">
+		<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900" rel="stylesheet">
+		<link rel="stylesheet" href="./style/default/css/bootstrap.min.css">
+		<link rel="stylesheet" href="./style/default/css/font-awesome.min.css">
+		<link rel="stylesheet" href="./style/default/css/owl.carousel.css">
+		<link rel="stylesheet" href="./style/default/css/owl.theme.css">
+		<link rel="stylesheet" href="./style/default/css/owl.transitions.css">
+		<link rel="stylesheet" href="./style/default/css/meanmenu/meanmenu.min.css">
+		<link rel="stylesheet" href="./style/default/css/animate.css">
+		<link rel="stylesheet" href="./style/default/css/normalize.css">
+		<link rel="stylesheet" href="./style/default/css/scrollbar/jquery.mCustomScrollbar.min.css">
+		<link rel="stylesheet" href="./style/default/css/notika-custom-icon.css">
+		<link rel="stylesheet" href="./style/default/css/wave/waves.min.css">
+		<link rel="stylesheet" href="./style/default/css/wave/button.css">
+		<link rel="stylesheet" href="./style/default/css/main.css">
+		<link rel="stylesheet" href="./style/default/style.css">
+		<link rel="stylesheet" href="./style/default/css/responsive.css">
+		<script src="./style/default/js/vendor/modernizr-2.8.3.min.js"></script>
+	</head>
+	<body>
+		<div class="header-top-area">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+						<div class="logo-area">
+							<a href="index.php"><img src="./style/default/img/logo/logo.png" alt="" /></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="breadcomb-area mg-tb-40">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<div class="breadcomb-list">
+							<div class="row">
+								<div class="breadcomb-wp">
+									<div class="breadcomb-ctn">
+										<h2>Container Manager</h2>
+                    <p>%%ContainerName%%</p>
+                    <p>Status: %%STATUS%%</p>
+									</div>
+								</div>
+							</div>
+						</div>
+          </div>
+				</div>
+			</div>
+		</div>
+		<div class="main-menu-area mg-tb-40">
+      <div class="container" style="text-align:center;">
+        <form method="post" action="index.php?page=do" enctype="multipart/form-data">
+          <button type="submit" name="do-start" value="start" class="btn-lg notika-btn-lightgreen waves-effect">START CONTAINER</button>
+          <button type="submit" name="do-stop" value="stop" class="btn-lg notika-btn-orange waves-effect">STOP CONTAINER</button>
+          <button type="submit" name="do-kill" value="kill" class="btn-lg notika-btn-red waves-effect">KILL CONTAINER</button>
+          <button type="submit" name="do-restart" value="restart" class="btn-lg notika-btn-cyan waves-effect">RESTART CONTAINER</button>
+        </form>
+			</div>
+		</div>
+		<div class="breadcomb-area mg-tb-40">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<div class="breadcomb-list">
+							<div class="row">
+								<div class="breadcomb-ctn" style="margin-right: 20px">
+									<pre id="consoleview" class="pre-scrollable" style="width: 100%; min-height: 350px; max-height: 350px; height: 350px; overflow-y: scroll;">
+%%ContainerLogOutput%%
+                  </pre>
+                </div>
+                <form method="post" action="index.php?page=do" enctype="multipart/form-data">
+                  <table style="width: 100%; margin: 20px">
+                    <tr style="width: 100%;">
+                      <td style="margin: 5px">
+                        <div class="form-group float-lb">
+                          <div class="nk-int-st">
+                              <input type="text" name="commandtext" placeholder="..." class="form-control">
+                          </div>
+                        </div>
+                      </td>
+                      <td style="margin: 5px; width: 150px; text-align:center;">
+                        <button type="submit" name="do-command" value="command" class="btn notika-btn-bluegray btn-reco-mg btn-button-mg waves-effect">RUN</button>
+                      </td>
+                    </tr>
+                  </table>
+                </form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+    </div>
+
+    <div style="position:absolute; left: 30px; bottom: 30px"><a href="index.php?logout=1">Logout</a></div>
+    
+    <script>
+      var messageBody = document.querySelector('#consoleview');
+      messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
+
+    </script>
+		<script src="./style/default/js/vendor/jquery-1.12.4.min.js"></script>
+		<script src="./style/default/js/bootstrap.min.js"></script>
+		<script src="./style/default/js/wow.min.js"></script>
+		<script src="./style/default/js/jquery-price-slider.js"></script>
+		<script src="./style/default/js/owl.carousel.min.js"></script>
+		<script src="./style/default/js/jquery.scrollUp.min.js"></script>
+		<script src="./style/default/js/meanmenu/jquery.meanmenu.js"></script>
+		<script src="./style/default/js/counterup/jquery.counterup.min.js"></script>
+		<script src="./style/default/js/counterup/waypoints.min.js"></script>
+		<script src="./style/default/js/counterup/counterup-active.js"></script>
+		<script src="./style/default/js/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script src="./style/default/js/sparkline/jquery.sparkline.min.js"></script>
+		<script src="./style/default/js/sparkline/sparkline-active.js"></script>
+		<script src="./style/default/js/flot/jquery.flot.js"></script>
+		<script src="./style/default/js/flot/jquery.flot.resize.js"></script>
+		<script src="./style/default/js/flot/flot-active.js"></script>
+		<script src="./style/default/js/knob/jquery.knob.js"></script>
+		<script src="./style/default/js/knob/jquery.appear.js"></script>
+		<script src="./style/default/js/knob/knob-active.js"></script>
+		<script src="./style/default/js/wave/waves.min.js"></script>
+		<script src="./style/default/js/wave/wave-active.js"></script>
+		<script src="./style/default/js/chat/jquery.chat.js"></script>
+		<script src="./style/default/js/login/login-action.js"></script>
+		<script src="./style/default/js/todo/jquery.todo.js"></script>
+		<script src="./style/default/js/plugins.js"></script>
+		<script src="./style/default/js/main.js"></script>
+		<script src="./style/default/js/tawk-chat.js"></script>
+	</body>
+</html>
