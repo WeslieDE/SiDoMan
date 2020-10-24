@@ -67,6 +67,12 @@
 				echo $container['Status'];
 			}
 
+			if(strtoupper($_REQUEST['METODE']) == "LOG")
+			{
+				$logOutput = $dockerClient->getContainerLogs($_SESSION['CONTAINER']);
+				echo clean($logOutput);
+			}
+
 			if(strtoupper($_REQUEST['METODE']) == "COMMAND")
 			{
 				if(isset($_REQUEST['COMMAND']))
