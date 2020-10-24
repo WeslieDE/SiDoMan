@@ -36,7 +36,7 @@
 				$_SESSION['LOGIN'] = "true";
 				$_SESSION['CONTAINER'] = trim(ltrim($container['Names']['0'], '/'));
 
-				include "./pages/dashboard.php";
+				header("Location: index.php");
 				die();
 			}
 		}
