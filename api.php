@@ -40,22 +40,31 @@
 			if(strtoupper($_REQUEST['METODE']) == "START")
 			{
 				$dockerClient->startContainer($container['Id']);
+				echo "DONE";
 			}
 			
 			if(strtoupper($_REQUEST['METODE']) == "STOP")
 			{
 				$dockerClient->stopContainer($container['Id']);
+				echo "DONE";
 			}
 
 			if(strtoupper($_REQUEST['METODE']) == "KILL")
 			{
 				$dockerClient->killContainer($container['Id']);
+				echo "DONE";
 			}
 
 			if(strtoupper($_REQUEST['METODE']) == "RESTART")
 			{
 				$dockerClient->killContainer($container['Id']);
 				$dockerClient->startContainer($container['Id']);
+				echo "DONE";
+			}
+
+			if(strtoupper($_REQUEST['METODE']) == "STATE")
+			{
+				echo $container['Status'];
 			}
 
 			if(strtoupper($_REQUEST['METODE']) == "COMMAND")
@@ -71,6 +80,7 @@
 
 						system('cat '.$filename.' | socat EXEC:"docker attach '.$container['Id'].'",pty STDIN');
 						unlink($filename);
+						echo "DONE";
 					}
 				}
 			}
