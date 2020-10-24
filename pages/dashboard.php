@@ -5,30 +5,28 @@ if(isset($_SESSION['LOGIN']))
     {
         $dockerClient = new Docker();
         $allContainers = $dockerClient->getAllContainers();
-        $container = NULL;
+        $currentContainer = NULL;
 
         foreach($allContainers as $thisContainer)
         {
             if($thisContainer['Id'] == $_SESSION['CONTAINER'] || $_SESSION['CONTAINER'] == ltrim($thisContainer['Names']['0'], '/'))
-                $container = $thisContainer;
+                $currentContainer = $thisContainer;
         }
 
-        if($container == NULL)
+        if($currentContainer == NULL)
         {
-            print_r($_SESSION);
             die("unknown container");
         }
-            
 
         $logOutput = $dockerClient->getContainerLogs($_SESSION['CONTAINER']);
 
         $HTML = new HTML();
-        $HTML->setHTMLTitle(ltrim($container['Names']['0'], '/'));
+        $HTML->setHTMLTitle(ltrim($currentContainer['Names']['0'], '/'));
         $HTML->importHTML("style/default/dashboard.html");
 
-        $HTML->ReplaceLayoutInhalt("%%ContainerName%%", trim(ltrim($container['Names']['0'], '/'))); 
+        $HTML->ReplaceLayoutInhalt("%%ContainerName%%", trim(ltrim($currentContainer['Names']['0'], '/'))); 
         $HTML->ReplaceLayoutInhalt("%%ContainerLogOutput%%", html_entity_decode(clean($logOutput))); 
-        $HTML->ReplaceLayoutInhalt("%%STATUS%%", html_entity_decode($container['Status'])); 
+        $HTML->ReplaceLayoutInhalt("%%STATUS%%", html_entity_decode($currentContainer['Status'])); 
 
         $HTML->build();
         echo $HTML->ausgabe();
@@ -38,6 +36,4 @@ if(isset($_SESSION['LOGIN']))
 }else{
     die("Access denied!");
 }
-
-
 ?>
