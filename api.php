@@ -73,6 +73,12 @@
 				echo clean($logOutput);
 			}
 
+			if(strtoupper($_REQUEST['METODE']) == "HTMLLOG")
+			{
+				$logOutput = $dockerClient->getContainerLogs($currentContainer['Id']);
+				echo html_entity_decode(clean($logOutput));
+			}
+
 			if(strtoupper($_REQUEST['METODE']) == "COMMAND")
 			{
 				if(isset($_REQUEST['COMMAND']))
