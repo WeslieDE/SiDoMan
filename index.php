@@ -10,9 +10,6 @@ include_once("classen/HTML.php");
 include_once("classen/helper.php");
 include_once("classen/docker.php");
 
-//$_SESSION['CONTAINER'] = "Game.OpenSimulator.Twix";
-//$_SESSION['LOGIN'] = "true";
-
 if(isset($_REQUEST['logout']))
 	if($_REQUEST['logout'] == '1')
 		$_SESSION = array();
