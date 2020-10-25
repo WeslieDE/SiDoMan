@@ -114,12 +114,12 @@
 
 			request.onload = function() {
 				var messageBodyPreCheck = document.querySelector('#consoleview');
-				var scrollDown = messageBodyPreCheck.scrollTop == (messageBodyPreCheck.scrollHeight - messageBodyPreCheck.clientHeight);
+				var reload = messageBodyPreCheck.scrollTop == (messageBodyPreCheck.scrollHeight - messageBodyPreCheck.clientHeight);
 
-				document.getElementById("consoleview").innerHTML = request.response;
-
-				if (scrollDown == true)
+				if (reload == true)
 				{
+					document.getElementById("consoleview").innerHTML = request.response;
+
 					var messageBody = document.querySelector('#consoleview');
       				messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
 				}
@@ -128,11 +128,6 @@
 			request.send();
 		}, 3000);
 	</script>
-
-    <script>
-      var messageBody = document.querySelector('#consoleview');
-      messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
-    </script>
 		<script src="./style/default/js/vendor/jquery-1.12.4.min.js"></script>
 		<script src="./style/default/js/bootstrap.min.js"></script>
 		<script src="./style/default/js/wow.min.js"></script>
