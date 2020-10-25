@@ -130,7 +130,7 @@
 			};
 
 			statusrequest.onload = function() {
-				document.getElementById("servicestatus").innerHTML = "Status: " + request.response;
+				document.getElementById("servicestatus").innerHTML = "Status: " + statusrequest.response;
 			};
 
 			logrequest.send();
