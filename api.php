@@ -30,7 +30,7 @@
 		}
 	}
 
-	if($currentContainer == NULL)
+	if(@$currentContainer == NULL)
 		die("access denied!");
 
 	if(isset($_REQUEST['METODE']))
