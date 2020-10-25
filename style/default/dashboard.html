@@ -113,7 +113,8 @@
 			request.open('GET', "/api.php?METODE=HTMLLOG&CONTAINER=%%ContainerName%%&KEY=%%APIKey%%");
 
 			request.onload = function() {
-				var scrollDown = essageBody.scrollTop == (messageBody.scrollHeight - messageBody.clientHeight);
+				var messageBodyPreCheck = document.querySelector('#consoleview');
+				var scrollDown = messageBodyPreCheck.scrollTop == (messageBodyPreCheck.scrollHeight - messageBodyPreCheck.clientHeight);
 
 				document.getElementById("consoleview").innerHTML = request.response;
 
