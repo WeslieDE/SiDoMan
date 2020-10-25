@@ -64,7 +64,7 @@
 
 			if(strtoupper($_REQUEST['METODE']) == "STATE")
 			{
-				echo $container['Status'];
+				echo $currentContainer['Status'];
 			}
 
 			if(strtoupper($_REQUEST['METODE']) == "LOG")
