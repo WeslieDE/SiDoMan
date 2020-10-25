@@ -113,10 +113,15 @@
 			request.open('GET', "/api.php?METODE=HTMLLOG&CONTAINER=%%ContainerName%%&KEY=%%APIKey%%");
 
 			request.onload = function() {
+				var scrollDown = essageBody.scrollTop == (messageBody.scrollHeight - messageBody.clientHeight);
+
 				document.getElementById("consoleview").innerHTML = request.response;
 
-				var messageBody = document.querySelector('#consoleview');
-      			messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
+				if (scrollDown == true)
+				{
+					var messageBody = document.querySelector('#consoleview');
+      				messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
+				}
 			};
 
 			request.send();
