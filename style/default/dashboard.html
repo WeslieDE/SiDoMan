@@ -47,7 +47,7 @@
 									<div class="breadcomb-ctn">
 										<h2>Container Manager</h2>
                     <p>%%ContainerName%%</p>
-                    <p>Status: <div id="servicestatus">%%STATUS%%</div></p>
+                    <p id="servicestatus">Status: %%STATUS%%</p>
 									</div>
 								</div>
 							</div>
@@ -130,7 +130,7 @@
 			};
 
 			statusrequest.onload = function() {
-				document.getElementById("servicestatus").innerHTML = request.response;
+				document.getElementById("servicestatus").innerHTML = "Status: " + request.response;
 			};
 
 			logrequest.send();
