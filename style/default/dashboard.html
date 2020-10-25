@@ -75,24 +75,24 @@
 								<div class="breadcomb-ctn" style="margin-right: 20px">
 									<pre id="consoleview" class="pre-scrollable" style="width: 100%; min-height: 350px; max-height: 350px; height: 350px; overflow-y: scroll;">
 %%ContainerLogOutput%%
-                  </pre>
-                </div>
-                <form method="post" action="index.php?page=do" enctype="multipart/form-data">
-                  <table style="width: 100%; margin: 20px">
-                    <tr style="width: 100%;">
-                      <td style="margin: 5px">
-                        <div class="form-group float-lb">
-                          <div class="nk-int-st">
-                              <input type="text" name="commandtext" placeholder="..." class="form-control">
-                          </div>
-                        </div>
-                      </td>
-                      <td style="margin: 5px; width: 150px; text-align:center;">
-                        <button type="submit" name="do-command" value="command" class="btn notika-btn-bluegray btn-reco-mg btn-button-mg waves-effect">RUN</button>
-                      </td>
-                    </tr>
-                  </table>
-                </form>
+									</pre>
+								</div>
+								<form method="post" action="index.php?page=do" enctype="multipart/form-data">
+									<table style="width: 100%; margin: 20px">
+										<tr style="width: 100%;">
+										<td style="margin: 5px">
+											<div class="form-group float-lb">
+											<div class="nk-int-st">
+												<input type="text" name="commandtext" placeholder="..." class="form-control">
+											</div>
+											</div>
+										</td>
+										<td style="margin: 5px; width: 150px; text-align:center;">
+											<button type="submit" name="do-command" value="command" class="btn notika-btn-bluegray btn-reco-mg btn-button-mg waves-effect">RUN</button>
+										</td>
+										</tr>
+									</table>
+								</form>
 							</div>
 						</div>
 					</div>
@@ -101,11 +101,31 @@
     </div>
 
     <div style="position:absolute; left: 30px; bottom: 30px"><a href="index.php?logout=1">Logout</a></div>
-    
+	
+	<script>
+		var messageBody = document.querySelector('#consoleview');
+      	messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
+
+		// Update every 5 second
+		var timer = setInterval(function() {
+			let request = new XMLHttpRequest();
+			request.responseType = 'text';
+			request.open('GET', "/api.php?METODE=HTMLLOG&CONTAINER=%%ContainerName%%&KEY=%%APIKey%%");
+
+			request.onload = function() {
+				document.getElementById("consoleview").innerHTML = request.response;
+
+				var messageBody = document.querySelector('#consoleview');
+      			messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
+			};
+
+			request.send();
+		}, 5000);
+	</script>
+
     <script>
       var messageBody = document.querySelector('#consoleview');
       messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
-
     </script>
 		<script src="./style/default/js/vendor/jquery-1.12.4.min.js"></script>
 		<script src="./style/default/js/bootstrap.min.js"></script>
