@@ -47,7 +47,7 @@
 									<div class="breadcomb-ctn">
 										<h2>Container Manager</h2>
                     <p>%%ContainerName%%</p>
-                    <p>Status: %%STATUS%%</p>
+                    <p>Status: <div id="servicestatus">%%STATUS%%</div></p>
 									</div>
 								</div>
 							</div>
@@ -108,11 +108,15 @@
 
 		// Update every 3 second
 		var timer = setInterval(function() {
-			let request = new XMLHttpRequest();
-			request.responseType = 'text';
-			request.open('GET', "/api.php?METODE=HTMLLOG&CONTAINER=%%ContainerName%%&KEY=%%APIKey%%");
+			let logrequest = new XMLHttpRequest();
+			logrequest.responseType = 'text';
+			logrequest.open('GET', "/api.php?METODE=HTMLLOG&CONTAINER=%%ContainerName%%&KEY=%%APIKey%%");
 
-			request.onload = function() {
+			let statusrequest = new XMLHttpRequest();
+			statusrequest.responseType = 'text';
+			statusrequest.open('GET', "/api.php?METODE=STATE&CONTAINER=%%ContainerName%%&KEY=%%APIKey%%");
+
+			logrequest.onload = function() {
 				var messageBodyPreCheck = document.querySelector('#consoleview');
 				var reload = messageBodyPreCheck.scrollTop == (messageBodyPreCheck.scrollHeight - messageBodyPreCheck.clientHeight);
 
@@ -125,7 +129,12 @@
 				}
 			};
 
-			request.send();
+			statusrequest.onload = function() {
+				document.getElementById("servicestatus").innerHTML = request.response;
+			};
+
+			logrequest.send();
+			statusrequest.send();
 		}, 3000);
 	</script>
 		<script src="./style/default/js/vendor/jquery-1.12.4.min.js"></script>
