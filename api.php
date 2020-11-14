@@ -30,7 +30,7 @@
 		}
 	}
 
-	if($currentContainer == NULL)
+	if(@$currentContainer == NULL)
 		die("access denied!");
 
 	if(isset($_REQUEST['METODE']))
@@ -64,13 +64,19 @@
 
 			if(strtoupper($_REQUEST['METODE']) == "STATE")
 			{
-				echo $container['Status'];
+				echo $currentContainer['Status'];
 			}
 
 			if(strtoupper($_REQUEST['METODE']) == "LOG")
 			{
 				$logOutput = $dockerClient->getContainerLogs($currentContainer['Id']);
 				echo clean($logOutput);
+			}
+
+			if(strtoupper($_REQUEST['METODE']) == "HTMLLOG")
+			{
+				$logOutput = $dockerClient->getContainerLogs($currentContainer['Id']);
+				echo html_entity_decode(clean($logOutput))."\n";
 			}
 
 			if(strtoupper($_REQUEST['METODE']) == "COMMAND")

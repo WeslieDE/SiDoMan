@@ -13,16 +13,13 @@
 		<link rel="stylesheet" href="./style/default/css/owl.carousel.css">
 		<link rel="stylesheet" href="./style/default/css/owl.theme.css">
 		<link rel="stylesheet" href="./style/default/css/owl.transitions.css">
-		<link rel="stylesheet" href="./style/default/css/meanmenu/meanmenu.min.css">
 		<link rel="stylesheet" href="./style/default/css/animate.css">
 		<link rel="stylesheet" href="./style/default/css/normalize.css">
-		<link rel="stylesheet" href="./style/default/css/scrollbar/jquery.mCustomScrollbar.min.css">
 		<link rel="stylesheet" href="./style/default/css/notika-custom-icon.css">
-		<link rel="stylesheet" href="./style/default/css/wave/waves.min.css">
-		<link rel="stylesheet" href="./style/default/css/wave/button.css">
 		<link rel="stylesheet" href="./style/default/css/main.css">
 		<link rel="stylesheet" href="./style/default/style.css">
 		<link rel="stylesheet" href="./style/default/css/responsive.css">
+		<link rel="stylesheet" href="./style/default/css/wave/button.css">
 		<script src="./style/default/js/vendor/modernizr-2.8.3.min.js"></script>
 	</head>
 	<body>
@@ -46,26 +43,28 @@
 								<div class="breadcomb-wp">
 									<div class="breadcomb-ctn">
 										<h2>Container Manager</h2>
-                    <p>%%ContainerName%%</p>
-                    <p>Status: %%STATUS%%</p>
+										<p>%%ContainerName%%</p>
+										<p id="servicestatus">Status: %%STATUS%%</p>
 									</div>
 								</div>
 							</div>
 						</div>
-          </div>
+					</div>
 				</div>
 			</div>
 		</div>
-		<div class="main-menu-area mg-tb-40">
-      <div class="container" style="text-align:center;">
-        <form method="post" action="index.php?page=do" enctype="multipart/form-data">
-          <button type="submit" name="do-start" value="start" class="btn-lg notika-btn-lightgreen waves-effect">START CONTAINER</button>
-          <button type="submit" name="do-stop" value="stop" class="btn-lg notika-btn-orange waves-effect">STOP CONTAINER</button>
-          <button type="submit" name="do-kill" value="kill" class="btn-lg notika-btn-red waves-effect">KILL CONTAINER</button>
-          <button type="submit" name="do-restart" value="restart" class="btn-lg notika-btn-cyan waves-effect">RESTART CONTAINER</button>
-        </form>
+
+		<div class="breadcomb-area mg-tb-40">
+			<div class="container" style="text-align:center;">
+				<form method="post" action="index.php?page=do" enctype="multipart/form-data">
+				<button type="submit" name="do-start" value="start" class="btn-lg notika-btn-lightgreen waves-effect">START CONTAINER</button>
+				<button type="submit" name="do-stop" value="stop" class="btn-lg notika-btn-orange waves-effect">STOP CONTAINER</button>
+				<button type="submit" name="do-kill" value="kill" class="btn-lg notika-btn-red waves-effect">KILL CONTAINER</button>
+				<button type="submit" name="do-restart" value="restart" class="btn-lg notika-btn-cyan waves-effect">RESTART CONTAINER</button>
+				</form>
 			</div>
 		</div>
+
 		<div class="breadcomb-area mg-tb-40">
 			<div class="container">
 				<div class="row">
@@ -75,24 +74,24 @@
 								<div class="breadcomb-ctn" style="margin-right: 20px">
 									<pre id="consoleview" class="pre-scrollable" style="width: 100%; min-height: 350px; max-height: 350px; height: 350px; overflow-y: scroll;">
 %%ContainerLogOutput%%
-                  </pre>
-                </div>
-                <form method="post" action="index.php?page=do" enctype="multipart/form-data">
-                  <table style="width: 100%; margin: 20px">
-                    <tr style="width: 100%;">
-                      <td style="margin: 5px">
-                        <div class="form-group float-lb">
-                          <div class="nk-int-st">
-                              <input type="text" name="commandtext" placeholder="..." class="form-control">
-                          </div>
-                        </div>
-                      </td>
-                      <td style="margin: 5px; width: 150px; text-align:center;">
-                        <button type="submit" name="do-command" value="command" class="btn notika-btn-bluegray btn-reco-mg btn-button-mg waves-effect">RUN</button>
-                      </td>
-                    </tr>
-                  </table>
-                </form>
+									</pre>
+								</div>
+								<form method="post" action="index.php?page=do" enctype="multipart/form-data">
+									<table style="width: 100%; margin: 20px">
+										<tr style="width: 100%;">
+										<td style="margin: 5px">
+											<div class="form-group float-lb">
+											<div class="nk-int-st">
+												<input type="text" name="commandtext" placeholder="..." class="form-control">
+											</div>
+											</div>
+										</td>
+										<td style="margin: 5px; width: 150px; text-align:center;">
+											<button type="submit" name="do-command" value="command" class="btn notika-btn-bluegray btn-reco-mg btn-button-mg waves-effect">RUN</button>
+										</td>
+										</tr>
+									</table>
+								</form>
 							</div>
 						</div>
 					</div>
@@ -101,38 +100,47 @@
     </div>
 
     <div style="position:absolute; left: 30px; bottom: 30px"><a href="index.php?logout=1">Logout</a></div>
-    
-    <script>
-      var messageBody = document.querySelector('#consoleview');
-      messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
+	
+	<script>
+		var messageBody = document.querySelector('#consoleview');
+      	messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
 
-    </script>
+		// Update every 3 second
+		var timer = setInterval(function() {
+			let logrequest = new XMLHttpRequest();
+			logrequest.responseType = 'text';
+			logrequest.open('GET', "/api.php?METODE=HTMLLOG&CONTAINER=%%ContainerName%%&KEY=%%APIKey%%");
+
+			let statusrequest = new XMLHttpRequest();
+			statusrequest.responseType = 'text';
+			statusrequest.open('GET', "/api.php?METODE=STATE&CONTAINER=%%ContainerName%%&KEY=%%APIKey%%");
+
+			logrequest.onload = function() {
+				var messageBodyPreCheck = document.querySelector('#consoleview');
+				var reload = messageBodyPreCheck.scrollTop == (messageBodyPreCheck.scrollHeight - messageBodyPreCheck.clientHeight);
+
+				if (reload == true)
+				{
+					document.getElementById("consoleview").innerHTML = logrequest.response;
+
+					var messageBody = document.querySelector('#consoleview');
+      				messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
+				}
+			};
+
+			statusrequest.onload = function() {
+				document.getElementById("servicestatus").innerHTML = "Status: " + statusrequest.response;
+			};
+
+			logrequest.send();
+			statusrequest.send();
+		}, 3000);
+	</script>
 		<script src="./style/default/js/vendor/jquery-1.12.4.min.js"></script>
 		<script src="./style/default/js/bootstrap.min.js"></script>
 		<script src="./style/default/js/wow.min.js"></script>
-		<script src="./style/default/js/jquery-price-slider.js"></script>
-		<script src="./style/default/js/owl.carousel.min.js"></script>
 		<script src="./style/default/js/jquery.scrollUp.min.js"></script>
-		<script src="./style/default/js/meanmenu/jquery.meanmenu.js"></script>
-		<script src="./style/default/js/counterup/jquery.counterup.min.js"></script>
-		<script src="./style/default/js/counterup/waypoints.min.js"></script>
-		<script src="./style/default/js/counterup/counterup-active.js"></script>
-		<script src="./style/default/js/scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
-		<script src="./style/default/js/sparkline/jquery.sparkline.min.js"></script>
-		<script src="./style/default/js/sparkline/sparkline-active.js"></script>
-		<script src="./style/default/js/flot/jquery.flot.js"></script>
-		<script src="./style/default/js/flot/jquery.flot.resize.js"></script>
-		<script src="./style/default/js/flot/flot-active.js"></script>
-		<script src="./style/default/js/knob/jquery.knob.js"></script>
-		<script src="./style/default/js/knob/jquery.appear.js"></script>
-		<script src="./style/default/js/knob/knob-active.js"></script>
-		<script src="./style/default/js/wave/waves.min.js"></script>
-		<script src="./style/default/js/wave/wave-active.js"></script>
-		<script src="./style/default/js/chat/jquery.chat.js"></script>
-		<script src="./style/default/js/login/login-action.js"></script>
-		<script src="./style/default/js/todo/jquery.todo.js"></script>
 		<script src="./style/default/js/plugins.js"></script>
 		<script src="./style/default/js/main.js"></script>
-		<script src="./style/default/js/tawk-chat.js"></script>
 	</body>
 </html>

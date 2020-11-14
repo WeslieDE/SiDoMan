@@ -27,6 +27,7 @@ if(isset($_SESSION['LOGIN']))
         $HTML->ReplaceLayoutInhalt("%%ContainerName%%", trim(ltrim($currentContainer['Names']['0'], '/'))); 
         $HTML->ReplaceLayoutInhalt("%%ContainerLogOutput%%", html_entity_decode(clean($logOutput))); 
         $HTML->ReplaceLayoutInhalt("%%STATUS%%", html_entity_decode($currentContainer['Status'])); 
+        $HTML->ReplaceLayoutInhalt("%%APIKey%%", trim($currentContainer['Labels']['remotepass'])); 
 
         $HTML->build();
         echo $HTML->ausgabe();
