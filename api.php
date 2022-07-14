@@ -69,13 +69,31 @@
 
 			if(strtoupper($_REQUEST['METODE']) == "LOG")
 			{
-				$logOutput = $dockerClient->getContainerLogs($currentContainer['Id']);
+				$lines = 350;
+				if(isset($_REQUEST['LINES']))
+				{
+					if(trim($_REQUEST['LINES']) != "")
+					{
+						$lines = intval($_REQUEST['LINES']);
+					}
+				}
+
+				$logOutput = $dockerClient->getContainerLogs($currentContainer['Id'], $lines);
 				echo clean($logOutput);
 			}
 
 			if(strtoupper($_REQUEST['METODE']) == "HTMLLOG")
 			{
-				$logOutput = $dockerClient->getContainerLogs($currentContainer['Id']);
+				$lines = 350;
+				if(isset($_REQUEST['LINES']))
+				{
+					if(trim($_REQUEST['LINES']) != "")
+					{
+						$lines = intval($_REQUEST['LINES']);
+					}
+				}
+
+				$logOutput = $dockerClient->getContainerLogs($currentContainer['Id'], $lines);
 				echo html_entity_decode(clean($logOutput))."\n";
 			}
 

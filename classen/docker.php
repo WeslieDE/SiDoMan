@@ -18,9 +18,9 @@
 			return json_decode($jsonRAWData, TRUE);
 		}
 
-		public function getContainerLogs($container){
+		public function getContainerLogs($container, $lines = 350){
 			curl_setopt($this->CurlClient, CURLOPT_POST, FALSE);
-			curl_setopt($this->CurlClient, CURLOPT_URL, "http:/v1.24/containers/".$container."/logs?stdout=1&tail=350");
+			curl_setopt($this->CurlClient, CURLOPT_URL, "http:/v1.24/containers/".$container."/logs?stdout=1&tail=".$lines);
 
 			$rawOutput = curl_exec($this->CurlClient);
 			return $rawOutput;
